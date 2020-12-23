@@ -11,11 +11,21 @@ public class GameController : MonoBehaviour
     [Header("Config enemy")]
 
     public float timeToMove;
-
     public int shotvelocity;
     public int[] timeToShot;
     public GameObject[] enemyPrefab;
 
+    [Header("Player config")]
+    public Transform limSup;
+    public Transform limInf;
+    public Transform limiEsq;
+    public Transform limiDir;
+
+    [Header("Cam config")]
+    public Transform limiCamEsq;
+    public Transform limiCamDir;
+
+    public float velCam;
 
     void Start()
     {
