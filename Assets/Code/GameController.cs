@@ -8,6 +8,15 @@ public class GameController : MonoBehaviour
 
     public GameObject[] powerUps;
 
+    [Header("Config enemy")]
+
+    public float timeToMove;
+
+    public int shotvelocity;
+    public int[] timeToShot;
+    public GameObject[] enemyPrefab;
+
+
     void Start()
     {
         

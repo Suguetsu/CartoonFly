@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [Header("Shot Config")]
     public float shotSpeed;
     public float timeToshot;
+  
+
     public GameObject spawnShot;
     public GameObject shotPrefa;
     private bool isShot;
