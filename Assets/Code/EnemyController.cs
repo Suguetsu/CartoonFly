@@ -9,15 +9,16 @@ public class EnemyController : MonoBehaviour
     public GameObject blowPrefa;
     private GameController _GC;
 
-    private PlayerController _Pcontrol;
+   
 
     public Transform Weapon;
+    public TagShot bulletTag;
     public GameObject ShotPrefab;
 
     void Start()
     {
         _GC = FindObjectOfType(typeof(GameController)) as GameController;
-        _Pcontrol = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        
 
         StartCoroutine("ShotTime");
     }
@@ -25,8 +26,8 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Weapon.right = _Pcontrol.transform.position - transform.localPosition; 
+        if (_GC.isAlivePlayer)
+            Weapon.right = _GC._PlayerC.transform.position - transform.localPosition;
         // diferença de vetores para achar a posição do player
 
     }
@@ -36,11 +37,12 @@ public class EnemyController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
 
-            case ("Bullet"):
+            case ("playerShot"):
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
                 GameObject temp = Instantiate(blowPrefa, transform.localPosition, transform.localRotation);
                 Destroy(temp, 0.5f);
+
 
                 _GC.SpawnLoot(this.transform);
 
@@ -52,6 +54,7 @@ public class EnemyController : MonoBehaviour
     private void Shot()
     {
         GameObject temp = Instantiate(ShotPrefab, Weapon.position, Weapon.localRotation);
+        temp.transform.tag = _GC.AplicarTag(bulletTag);
         temp.GetComponent<Rigidbody2D>().velocity = Weapon.right * _GC.shotvelocity;
 
     }

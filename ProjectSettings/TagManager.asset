@@ -6,6 +6,8 @@ TagManager:
   tags:
   - firstPlace
   - Bullet
+  - playerShot
+  - enemyShot
   layers:
   - Default
   - TransparentFX
