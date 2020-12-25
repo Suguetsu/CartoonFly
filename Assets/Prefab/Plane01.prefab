@@ -158,7 +158,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965757408943700736}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -280,5 +280,4 @@ MonoBehaviour:
   shotSpeed: 7
   timeToshot: 0.3
   spawnShot: {fileID: 1965757408749012208}
-  shotPrefa: {fileID: 8892120213313038786, guid: 94a77d0121d0371468d1d2e5ca55f071,
-    type: 3}
+  tagBullest: 0
