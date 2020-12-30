@@ -51,6 +51,12 @@ public class GameController : MonoBehaviour
 
     public float velCam;
 
+    [Header("scene moviment")]
+    public Transform sceneTransform;
+    public Transform EndFase;
+    public float speedFase;
+
+
     void Start()
     {
 
@@ -62,9 +68,9 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-
+        sceneTransform.position = Vector3.MoveTowards(sceneTransform.position, new Vector3(0, EndFase.localPosition.y, 0), speedFase *Time.deltaTime);
     }
 
     // reponsavel por gerenciar a chance de pegar loot
