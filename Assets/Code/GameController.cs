@@ -7,6 +7,11 @@ public enum TagShot
     playerShot, enemyShot
 }
 
+public enum GameState
+{
+    Intro, GamePlay
+}
+
 public class GameController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -26,6 +31,7 @@ public class GameController : MonoBehaviour
 
     [Header("Shoot prefab")]
     public GameObject[] shotPrefab;
+   
 
     [Header("Player config")]
     public Transform limSup;
@@ -34,16 +40,30 @@ public class GameController : MonoBehaviour
     public Transform limiDir;
     public Transform spawnPlayer;
 
+    public GameObject shadown;
+    public GameObject gas;
+
+
     public int extraLife;
     public int idShotPlayer;
+
     [SerializeField]
     public PlayerController _PlayerC;
+
+
     public bool isAlivePlayer;
     public bool isInvunerable;
+
+
     public float timeInvulnerable;
+    public float scalePlane;
+    public float riseUpVel;
 
     public GameObject playerPrefab;
+
     public Transform playerTransform;
+    public Transform partida;
+    public Transform decolagem;
 
     [Header("Cam config")]
     public Transform limiCamEsq;
@@ -51,8 +71,18 @@ public class GameController : MonoBehaviour
 
     public float velCam;
 
+    [Header("scene moviment")]
+    public Transform sceneTransform;
+    public Transform EndFase;
+    public float speedFase;
+
+    [Header("Game stare config")]
+    public GameState currentGameState;
+
+
     void Start()
     {
+
 
         //if (isAlivePlayer)
         //_PlayerC = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -62,9 +92,13 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-
+     
+         if (currentGameState == GameState.GamePlay)
+        {
+            sceneTransform.position = Vector3.MoveTowards(sceneTransform.position, new Vector3(0, EndFase.localPosition.y, 0), speedFase * Time.deltaTime);
+        }
     }
 
     // reponsavel por gerenciar a chance de pegar loot
